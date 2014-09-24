@@ -1,0 +1,74 @@
+﻿@model rfp_mgmt_system.Models.EMPLOYEE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EMPLOYEE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeSecurityQuestion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeSecurityQuestion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeSecurityAnswer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeSecurityAnswer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emp_Admin.EmployeeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emp_Admin.EmployeeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMP_LOGIN.Emp_Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMP_LOGIN.Emp_Username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
