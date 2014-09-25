@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Decline RFP";
+}
+
+<h1>Decline Selected RFP</h1><br />
+
+<h3>Page synopsis</h3>
+<p>
+    This is the page the vendor will use to respond decline a selected RFP.  This screen will list all of
+    the information regarding the RFP and will a button for the vendor to decline responding to the RFP.
+    There will also be a link to return to the Vendor RFP dashboard without declining
+</p>
+
+<br />
+
+<p>From here, there are 2 possibilities:</p>
+
+<ul>
+    <li>The vendor declines the RFP and is returned to the RFP dashboard</li>
+    <li>The vendor does not decline the RFP and returns to the RFP dashboard</li>
+</ul>
+
+<br />
+
+<h3>Links</h3>
+@Html.ActionLink("Return to Vendor RFP Dashboard", "Index", "VendorRFP")<br />
+
+
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: VendorRFP</h5>
+<h5>Method: Decline</h5>
+

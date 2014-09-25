@@ -9,30 +9,29 @@
 <p>
     This is the page the vendor will be directed to when they successfully log in.
     The vendor has access to the following functions: manage RFIs,
-    manage RFPs, personal account maintanence.
+    manage RFPs, manage contracts and personal account maintanence.
 </p>
 
 <br />
-<!--
+
 
 <p>From here, there are 4 possibilities:</p>
 
 <ul>
-    <li>The user logs in succesfully as an Employee</li>
-    <li>The user logs in succesfully as an Administrator</li>
-    <li>The user logs in succesfully as a  Vendor</li>
-    <li>The user decides to reset their password</li>
+    <li>The vendor selects 'Manage RFIs'</li>
+    <li>The vendor selects 'Manage RFPs'</li>
+    <li>The vendor selects 'Manage Contracts'</li>
+    <li>The vendor selects 'Manage Account'</li>
 </ul>
 
 <br />
 <h3>Links</h3>
-@Html.ActionLink("Employee Login", "Index", "Account")<br />
-@Html.ActionLink("Administrator Login", "Index", "Account")<br />
-@Html.ActionLink("Vendor Login", "Index", "Account")<br />
-@Html.ActionLink("Reset Password", "Reset", "Account")<br />
+@Html.ActionLink("Manage RFIs", "Index", "VendorRFI")<br />
+@Html.ActionLink("Manage RFPs", "Index", "VendorRFP")<br />
+@Html.ActionLink("Manage Contracts", "Index", "VendorContract")<br />
+@Html.ActionLink("Manage Vendor Account", "Update", "Account")<br />
 
 <br />
--->
 
 <h3>Backend Information</h3>
 <h5>Controller: Vendor</h5>

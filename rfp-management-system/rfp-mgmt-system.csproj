@@ -168,7 +168,10 @@
     <Compile Include="Controllers\EmployeeRFPController.cs" />
     <Compile Include="Controllers\EmployeeVendorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\VendorContractController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
+    <Compile Include="Controllers\VendorRFIController.cs" />
+    <Compile Include="Controllers\VendorRFPController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,6 +239,15 @@
     <Content Include="Views\AdminEmployee\Create.cshtml" />
     <Content Include="Views\AdminEmployee\Lock.cshtml" />
     <Content Include="Views\AdminEmployee\Update.cshtml" />
+    <Content Include="Views\VendorRFI\Index.cshtml" />
+    <Content Include="Views\VendorRFP\Index.cshtml" />
+    <Content Include="Views\VendorContract\Index.cshtml" />
+    <Content Include="Views\VendorRFI\Respond.cshtml" />
+    <Content Include="Views\VendorRFI\Decline.cshtml" />
+    <Content Include="Views\VendorRFP\Respond.cshtml" />
+    <Content Include="Views\VendorRFP\Decline.cshtml" />
+    <Content Include="Views\VendorContract\Respond.cshtml" />
+    <Content Include="Views\VendorContract\Decline.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
