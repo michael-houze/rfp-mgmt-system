@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Contract Management";
+}
+
+<h1>This is the Contract Management page</h1><br />
+
+<h3>Page synopsis</h3>
+<p>
+    This is the page the employee will use to create and edit contracts. This page will list all
+    of the existing contracts and will provide sort and filter options.  Each existing contract will have an 'Edit'
+    link next to it.  There will 'Create new Contract' and 'Return to Dashboard' links as well.  This page
+    will be the same for employee and admin users.
+</p>
+
+<br />
+
+<p>From here, there are 4 possibilities:</p>
+
+<ul>
+    <li>The user selects the 'Create New Create' link</li>
+    <li>The user selects the 'Edit' link next to an existing Create</li>
+    <li>The user is an admin and returns to their dashboard</li>
+    <li>The user is an employee and returns to their dashboard</li>
+</ul>
+
+<br />
+
+<h3>Links</h3>
+@Html.ActionLink("Create New Contract", "Create", "EmployeeContract")<br />
+@Html.ActionLink("Edit Existing Contract", "Update", "EmployeeContract")<br />
+@Html.ActionLink("Return to Dashboard (Admin)", "Index", "Admin")<br />
+@Html.ActionLink("Return to Dashboard (Employee)", "Index", "Employee")<br />
+
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: EmployeeContract</h5>
+<h5>Method: Index</h5>

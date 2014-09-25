@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h1>This is the Login page.</h1><br />
+
+<h3>Page synopsis</h3>
+<p>
+    This is the page the user will go to login.  This page will be used by both BH employees.  The login process
+    will direct them to their dashboard based on what type of user they log in as.  If the user enters theirs password incorrectly,
+    an error message will pop up, but they will not be redirected.  A reset password link will also be here.
+</p>
+
+<br />
+<p>From here, there are 4 possibilities:</p>
+
+<ul>
+    <li>The user logs in succesfully as an Employee</li>
+    <li>The user logs in succesfully as an Administrator</li>
+    <li>The user logs in succesfully as a  Vendor</li>
+    <li>The user decides to reset their password</li>
+</ul>
+
+<br />
+<h3>Links</h3>
+@Html.ActionLink("Employee Login", "Index", "Employee")<br />
+@Html.ActionLink("Administrator Login", "Index", "Admin")<br />
+@Html.ActionLink("Vendor Login", "Index", "Vendor")<br />
+@Html.ActionLink("Reset Password", "Reset", "Account")<br />
+
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: Account</h5>
+<h5>Method: Index</h5>
+

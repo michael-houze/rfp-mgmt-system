@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>This is the Home page.</h1><br />
+
+<h3>Page synopsis</h3>
+<p>This is the first page the user will see when they go to the BH url.  It is customizable based on the recommendations of BH.
+   Options include BH history, Links to other BH sites, profiles of the supply chain employees</p><br />
+<p>From here, the user has 2 options:</p>
+<ul>
+    <li>If they are a current Vendor, they can login using the 'Login' link</li>
+    <li>If they are a Vendor who is not in the system, they can register using the 'Vendor Registration' link </li>
+    <li>If they are a current Employee, they can login using the 'Login' link</li>
+</ul>
+
+<br />
+<h3>Links</h3>
+@Html.ActionLink("Login", "Index", "Account")<br />
+@Html.ActionLink("Vendor Registration", "Register", "Account")<br /><br />
+
+<h3>Backend Information</h3>
+<h5>Controller: Home</h5>
+<h5>Method: Index</h5>
+

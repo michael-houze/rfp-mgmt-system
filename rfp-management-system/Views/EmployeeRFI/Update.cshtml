@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Update RFI";
+}
+
+<h1>This is the Update Selected RFI page</h1><br />
+
+<h3>Page synopsis</h3>
+<p>
+    This is the page the employee will use to edit an existing RFI. This page will list all
+    of the attributes that exist for the selected RFI.  Validation will exist on each
+    filed to ensure there are no data issues.  When the 'Update' link is selected, the changes
+    will be saved.  There will also be a 'Return to RFI Management' link.
+</p>
+
+<br />
+
+<p>From here, there are 2 possibilities:</p>
+
+<ul>
+    <li>The user edits the selected RFI and is sent back to RFI management</li>
+    <li>The user does not edit the RFI and returns to RFI management</li>
+</ul>
+
+<br />
+
+<h3>Links</h3>
+@Html.ActionLink("Return to RFI Management", "Index", "EmployeeRFI")<br />
+
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: EmployeeRFI</h5>
+<h5>Method: Update</h5>
+
