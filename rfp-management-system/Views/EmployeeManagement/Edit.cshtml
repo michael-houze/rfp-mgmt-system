@@ -1,0 +1,81 @@
+﻿@model rfp_mgmt_system.EMPLOYEE
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            <h4>EMPLOYEE</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.EmployeeID)
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmployeeFirstName, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EmployeeFirstName)
+                    @Html.ValidationMessageFor(model => model.EmployeeFirstName)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmployeeLastName, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EmployeeLastName)
+                    @Html.ValidationMessageFor(model => model.EmployeeLastName)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmployeeEmail, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EmployeeEmail)
+                    @Html.ValidationMessageFor(model => model.EmployeeEmail)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmployeeSecurityQuestion, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EmployeeSecurityQuestion)
+                    @Html.ValidationMessageFor(model => model.EmployeeSecurityQuestion)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmployeeSecurityAnswer, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EmployeeSecurityAnswer)
+                    @Html.ValidationMessageFor(model => model.EmployeeSecurityAnswer)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

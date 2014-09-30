@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -163,6 +165,7 @@
     <Compile Include="Controllers\AdminEmployeeController.cs" />
     <Compile Include="Controllers\EmployeeContractController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EmployeeManagementController.cs" />
     <Compile Include="Controllers\EmployeeReportController.cs" />
     <Compile Include="Controllers\EmployeeRFIController.cs" />
     <Compile Include="Controllers\EmployeeRFPController.cs" />
@@ -172,6 +175,15 @@
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Controllers\VendorRFIController.cs" />
     <Compile Include="Controllers\VendorRFPController.cs" />
+    <Compile Include="EMPLOYEE.cs">
+      <DependentUpon>rpf-mgmt-system.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Emp_Admin.cs">
+      <DependentUpon>rpf-mgmt-system.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMP_LOGIN.cs">
+      <DependentUpon>rpf-mgmt-system.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,6 +191,21 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rpf-mgmt-system.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpf-mgmt-system.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rpf-mgmt-system.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpf-mgmt-system.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rpf-mgmt-system.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpf-mgmt-system.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +217,23 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="rpf-mgmt-system.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>rpf-mgmt-system.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="rpf-mgmt-system.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>rpf-mgmt-system.edmx</DependentUpon>
+      <LastGenOutput>rpf-mgmt-system.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="rpf-mgmt-system.edmx.diagram">
+      <DependentUpon>rpf-mgmt-system.edmx</DependentUpon>
+    </Content>
+    <Content Include="rpf-mgmt-system.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>rpf-mgmt-system.edmx</DependentUpon>
+      <LastGenOutput>rpf-mgmt-system.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -248,6 +292,11 @@
     <Content Include="Views\VendorRFP\Decline.cshtml" />
     <Content Include="Views\VendorContract\Respond.cshtml" />
     <Content Include="Views\VendorContract\Decline.cshtml" />
+    <Content Include="Views\EmployeeManagement\Create.cshtml" />
+    <Content Include="Views\EmployeeManagement\Delete.cshtml" />
+    <Content Include="Views\EmployeeManagement\Details.cshtml" />
+    <Content Include="Views\EmployeeManagement\Edit.cshtml" />
+    <Content Include="Views\EmployeeManagement\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -258,6 +307,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
