@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#shared_navbar {
+    background-color: #33CCFF;
+}
