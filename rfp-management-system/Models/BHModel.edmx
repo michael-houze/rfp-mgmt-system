@@ -1,0 +1,908 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BaptistHealthModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="ContractID" />
+          </Key>
+          <Property Name="ContractID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vendor_id" Type="int" />
+          <Property Name="reportID" Type="int" />
+          <Property Name="templateID" Type="int" />
+        </EntityType>
+        <EntityType Name="EMP_LOGIN">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Emp_Username" Type="varchar" MaxLength="20" />
+          <Property Name="Emp_Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeFirstName" Type="varchar" MaxLength="20" />
+          <Property Name="EmployeeLastName" Type="varchar" MaxLength="20" />
+          <Property Name="EmployeeEmail" Type="varchar" MaxLength="40" />
+          <Property Name="EmployeeSecurityQuestion" Type="varchar" MaxLength="120" />
+          <Property Name="EmployeeSecurityAnswer" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsAdmin" Type="bit" />
+        </EntityType>
+        <EntityType Name="ITEM">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="100" />
+          <Property Name="ItemCategory" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ITEMSOFFERED">
+          <Key>
+            <PropertyRef Name="ItemID" />
+            <PropertyRef Name="Vendor_ID" />
+          </Key>
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="Vendor_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reports">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportName" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="RFI">
+          <Key>
+            <PropertyRef Name="RFI_ID" />
+          </Key>
+          <Property Name="RFI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RFI_INVITE">
+          <Key>
+            <PropertyRef Name="RFI_ID" />
+            <PropertyRef Name="Vendor_ID" />
+          </Key>
+          <Property Name="RFI_ID" Type="int" Nullable="false" />
+          <Property Name="Vendor_ID" Type="int" Nullable="false" />
+          <Property Name="TemplateID" Type="int" Nullable="false" />
+          <Property Name="ReportID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RFP">
+          <Key>
+            <PropertyRef Name="RFP_ID" />
+          </Key>
+          <Property Name="RFP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RFP_INVITE">
+          <Key>
+            <PropertyRef Name="RFP_ID" />
+            <PropertyRef Name="Vendor_ID" />
+          </Key>
+          <Property Name="RFP_ID" Type="int" Nullable="false" />
+          <Property Name="Vendor_ID" Type="int" Nullable="false" />
+          <Property Name="TemplateID" Type="int" Nullable="false" />
+          <Property Name="ReportID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEMPLATE">
+          <Key>
+            <PropertyRef Name="templateID" />
+          </Key>
+          <Property Name="templateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TemplateName" Type="varchar" MaxLength="100" />
+          <Property Name="TemplateFile" Type="varbinary" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="VENDOR">
+          <Key>
+            <PropertyRef Name="Vendor_ID" />
+          </Key>
+          <Property Name="Vendor_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorFirstName" Type="varchar" MaxLength="20" />
+          <Property Name="VendorLastName" Type="varchar" MaxLength="20" />
+          <Property Name="VendorPhone" Type="varchar" MaxLength="15" />
+          <Property Name="VendorEmail" Type="varchar" MaxLength="40" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" />
+          <Property Name="Street" Type="varchar" MaxLength="30" />
+          <Property Name="City" Type="varchar" MaxLength="30" />
+          <Property Name="State" Type="varchar" MaxLength="2" />
+          <Property Name="Zip" Type="int" />
+          <Property Name="Sanctioned" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="VENDOR_LOGIN">
+          <Key>
+            <PropertyRef Name="Vendor_ID" />
+          </Key>
+          <Property Name="Vendor_ID" Type="int" Nullable="false" />
+          <Property Name="Vendor_Username" Type="varchar" MaxLength="20" />
+          <Property Name="Vendor_Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="fk_employeeidd">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="EMP_LOGIN" Type="Self.EMP_LOGIN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EMP_LOGIN">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_report">
+          <End Role="Reports" Type="Self.Reports" Multiplicity="1" />
+          <End Role="RFP_INVITE" Type="Self.RFP_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reports">
+              <PropertyRef Name="ReportID" />
+            </Principal>
+            <Dependent Role="RFP_INVITE">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_templateID">
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="1" />
+          <End Role="RFP_INVITE" Type="Self.RFP_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE">
+              <PropertyRef Name="templateID" />
+            </Principal>
+            <Dependent Role="RFP_INVITE">
+              <PropertyRef Name="TemplateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vendor_ID">
+          <End Role="VENDOR" Type="Self.VENDOR" Multiplicity="1" />
+          <End Role="RFP_INVITE" Type="Self.RFP_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENDOR">
+              <PropertyRef Name="Vendor_ID" />
+            </Principal>
+            <Dependent Role="RFP_INVITE">
+              <PropertyRef Name="Vendor_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vendorID">
+          <End Role="VENDOR" Type="Self.VENDOR" Multiplicity="1" />
+          <End Role="RFI_INVITE" Type="Self.RFI_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENDOR">
+              <PropertyRef Name="Vendor_ID" />
+            </Principal>
+            <Dependent Role="RFI_INVITE">
+              <PropertyRef Name="Vendor_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vendorlogin">
+          <End Role="VENDOR" Type="Self.VENDOR" Multiplicity="1" />
+          <End Role="VENDOR_LOGIN" Type="Self.VENDOR_LOGIN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="VENDOR">
+              <PropertyRef Name="Vendor_ID" />
+            </Principal>
+            <Dependent Role="VENDOR_LOGIN">
+              <PropertyRef Name="Vendor_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcontract_report">
+          <End Role="Reports" Type="Self.Reports" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reports">
+              <PropertyRef Name="ReportID" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="reportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcontract_template">
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE">
+              <PropertyRef Name="templateID" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="templateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcontract_vendor">
+          <End Role="VENDOR" Type="Self.VENDOR" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENDOR">
+              <PropertyRef Name="Vendor_ID" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="vendor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkitemID">
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="1" />
+          <End Role="ITEMSOFFERED" Type="Self.ITEMSOFFERED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ITEM">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="ITEMSOFFERED">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkitemVendor">
+          <End Role="VENDOR" Type="Self.VENDOR" Multiplicity="1" />
+          <End Role="ITEMSOFFERED" Type="Self.ITEMSOFFERED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENDOR">
+              <PropertyRef Name="Vendor_ID" />
+            </Principal>
+            <Dependent Role="ITEMSOFFERED">
+              <PropertyRef Name="Vendor_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkreport">
+          <End Role="Reports" Type="Self.Reports" Multiplicity="1" />
+          <End Role="RFI_INVITE" Type="Self.RFI_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reports">
+              <PropertyRef Name="ReportID" />
+            </Principal>
+            <Dependent Role="RFI_INVITE">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkRFI_ID">
+          <End Role="RFI" Type="Self.RFI" Multiplicity="1" />
+          <End Role="RFI_INVITE" Type="Self.RFI_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RFI">
+              <PropertyRef Name="RFI_ID" />
+            </Principal>
+            <Dependent Role="RFI_INVITE">
+              <PropertyRef Name="RFI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkRFP_ID">
+          <End Role="RFP" Type="Self.RFP" Multiplicity="1" />
+          <End Role="RFP_INVITE" Type="Self.RFP_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RFP">
+              <PropertyRef Name="RFP_ID" />
+            </Principal>
+            <Dependent Role="RFP_INVITE">
+              <PropertyRef Name="RFP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fktemplateID">
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="1" />
+          <End Role="RFI_INVITE" Type="Self.RFI_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE">
+              <PropertyRef Name="templateID" />
+            </Principal>
+            <Dependent Role="RFI_INVITE">
+              <PropertyRef Name="TemplateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BaptistHealthModelStoreContainer">
+          <EntitySet Name="Contract" EntityType="Self.Contract" Schema="cis420" store:Type="Tables" />
+          <EntitySet Name="EMP_LOGIN" EntityType="Self.EMP_LOGIN" Schema="cis420" store:Type="Tables" />
+          <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="cis420" store:Type="Tables" />
+          <EntitySet Name="ITEM" EntityType="Self.ITEM" Schema="cis420" store:Type="Tables" />
+          <EntitySet Name="ITEMSOFFERED" EntityType="Self.ITEMSOFFERED" Schema="cis420" store:Type="Tables" />
+          <EntitySet Name="Reports" EntityType="Self.Reports" Schema="cis420" store:Type="Tables" />
+          <EntitySet Name="RFI" EntityType="Self.RFI" Schema="cis420" store:Type="Tables" />
+          <EntitySet Name="RFI_INVITE" EntityType="Self.RFI_INVITE" Schema="cis420" store:Type="Tables" />
+          <EntitySet Name="RFP" EntityType="Self.RFP" Schema="cis420" store:Type="Tables" />
+          <EntitySet Name="RFP_INVITE" EntityType="Self.RFP_INVITE" Schema="cis420" store:Type="Tables" />
+          <EntitySet Name="TEMPLATE" EntityType="Self.TEMPLATE" Schema="cis420" store:Type="Tables" />
+          <EntitySet Name="VENDOR" EntityType="Self.VENDOR" Schema="cis420" store:Type="Tables" />
+          <EntitySet Name="VENDOR_LOGIN" EntityType="Self.VENDOR_LOGIN" Schema="cis420" store:Type="Tables" />
+          <AssociationSet Name="fk_employeeidd" Association="Self.fk_employeeidd">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="EMP_LOGIN" EntitySet="EMP_LOGIN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_report" Association="Self.fk_report">
+            <End Role="Reports" EntitySet="Reports" />
+            <End Role="RFP_INVITE" EntitySet="RFP_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_templateID" Association="Self.fk_templateID">
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+            <End Role="RFP_INVITE" EntitySet="RFP_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vendor_ID" Association="Self.fk_vendor_ID">
+            <End Role="VENDOR" EntitySet="VENDOR" />
+            <End Role="RFP_INVITE" EntitySet="RFP_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vendorID" Association="Self.fk_vendorID">
+            <End Role="VENDOR" EntitySet="VENDOR" />
+            <End Role="RFI_INVITE" EntitySet="RFI_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vendorlogin" Association="Self.fk_vendorlogin">
+            <End Role="VENDOR" EntitySet="VENDOR" />
+            <End Role="VENDOR_LOGIN" EntitySet="VENDOR_LOGIN" />
+          </AssociationSet>
+          <AssociationSet Name="fkcontract_report" Association="Self.fkcontract_report">
+            <End Role="Reports" EntitySet="Reports" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+          <AssociationSet Name="fkcontract_template" Association="Self.fkcontract_template">
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+          <AssociationSet Name="fkcontract_vendor" Association="Self.fkcontract_vendor">
+            <End Role="VENDOR" EntitySet="VENDOR" />
+            <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+          <AssociationSet Name="fkitemID" Association="Self.fkitemID">
+            <End Role="ITEM" EntitySet="ITEM" />
+            <End Role="ITEMSOFFERED" EntitySet="ITEMSOFFERED" />
+          </AssociationSet>
+          <AssociationSet Name="fkitemVendor" Association="Self.fkitemVendor">
+            <End Role="VENDOR" EntitySet="VENDOR" />
+            <End Role="ITEMSOFFERED" EntitySet="ITEMSOFFERED" />
+          </AssociationSet>
+          <AssociationSet Name="fkreport" Association="Self.fkreport">
+            <End Role="Reports" EntitySet="Reports" />
+            <End Role="RFI_INVITE" EntitySet="RFI_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fkRFI_ID" Association="Self.fkRFI_ID">
+            <End Role="RFI" EntitySet="RFI" />
+            <End Role="RFI_INVITE" EntitySet="RFI_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fkRFP_ID" Association="Self.fkRFP_ID">
+            <End Role="RFP" EntitySet="RFP" />
+            <End Role="RFP_INVITE" EntitySet="RFP_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fktemplateID" Association="Self.fktemplateID">
+            <End Role="TEMPLATE" EntitySet="TEMPLATE" />
+            <End Role="RFI_INVITE" EntitySet="RFI_INVITE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BaptistHealthModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="ContractID" />
+          </Key>
+          <Property Name="ContractID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vendor_id" Type="Int32" />
+          <Property Name="reportID" Type="Int32" />
+          <Property Name="templateID" Type="Int32" />
+          <NavigationProperty Name="Report" Relationship="Self.fkcontract_report" FromRole="Contract" ToRole="Reports" />
+          <NavigationProperty Name="TEMPLATE" Relationship="Self.fkcontract_template" FromRole="Contract" ToRole="TEMPLATE" />
+          <NavigationProperty Name="VENDOR" Relationship="Self.fkcontract_vendor" FromRole="Contract" ToRole="VENDOR" />
+        </EntityType>
+        <EntityType Name="EMP_LOGIN">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Emp_Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.fk_employeeidd" FromRole="EMP_LOGIN" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeEmail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeSecurityQuestion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeSecurityAnswer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <NavigationProperty Name="EMP_LOGIN" Relationship="Self.fk_employeeidd" FromRole="EMPLOYEE" ToRole="EMP_LOGIN" />
+        </EntityType>
+        <EntityType Name="ITEM">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ItemCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VENDORs" Relationship="Self.ITEMSOFFERED" FromRole="ITEM" ToRole="VENDOR" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Contracts" Relationship="Self.fkcontract_report" FromRole="Reports" ToRole="Contract" />
+          <NavigationProperty Name="RFP_INVITE" Relationship="Self.fk_report" FromRole="Reports" ToRole="RFP_INVITE" />
+          <NavigationProperty Name="RFI_INVITE" Relationship="Self.fkreport" FromRole="Reports" ToRole="RFI_INVITE" />
+        </EntityType>
+        <EntityType Name="RFI">
+          <Key>
+            <PropertyRef Name="RFI_ID" />
+          </Key>
+          <Property Name="RFI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="RFI_INVITE" Relationship="Self.fkRFI_ID" FromRole="RFI" ToRole="RFI_INVITE" />
+        </EntityType>
+        <EntityType Name="RFI_INVITE">
+          <Key>
+            <PropertyRef Name="RFI_ID" />
+            <PropertyRef Name="Vendor_ID" />
+          </Key>
+          <Property Name="RFI_ID" Type="Int32" Nullable="false" />
+          <Property Name="Vendor_ID" Type="Int32" Nullable="false" />
+          <Property Name="TemplateID" Type="Int32" Nullable="false" />
+          <Property Name="ReportID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Report" Relationship="Self.fkreport" FromRole="RFI_INVITE" ToRole="Reports" />
+          <NavigationProperty Name="RFI" Relationship="Self.fkRFI_ID" FromRole="RFI_INVITE" ToRole="RFI" />
+          <NavigationProperty Name="VENDOR" Relationship="Self.fk_vendorID" FromRole="RFI_INVITE" ToRole="VENDOR" />
+          <NavigationProperty Name="TEMPLATE" Relationship="Self.fktemplateID" FromRole="RFI_INVITE" ToRole="TEMPLATE" />
+        </EntityType>
+        <EntityType Name="RFP">
+          <Key>
+            <PropertyRef Name="RFP_ID" />
+          </Key>
+          <Property Name="RFP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="RFP_INVITE" Relationship="Self.fkRFP_ID" FromRole="RFP" ToRole="RFP_INVITE" />
+        </EntityType>
+        <EntityType Name="RFP_INVITE">
+          <Key>
+            <PropertyRef Name="RFP_ID" />
+            <PropertyRef Name="Vendor_ID" />
+          </Key>
+          <Property Name="RFP_ID" Type="Int32" Nullable="false" />
+          <Property Name="Vendor_ID" Type="Int32" Nullable="false" />
+          <Property Name="TemplateID" Type="Int32" Nullable="false" />
+          <Property Name="ReportID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Report" Relationship="Self.fk_report" FromRole="RFP_INVITE" ToRole="Reports" />
+          <NavigationProperty Name="RFP" Relationship="Self.fkRFP_ID" FromRole="RFP_INVITE" ToRole="RFP" />
+          <NavigationProperty Name="TEMPLATE" Relationship="Self.fk_templateID" FromRole="RFP_INVITE" ToRole="TEMPLATE" />
+          <NavigationProperty Name="VENDOR" Relationship="Self.fk_vendor_ID" FromRole="RFP_INVITE" ToRole="VENDOR" />
+        </EntityType>
+        <EntityType Name="TEMPLATE">
+          <Key>
+            <PropertyRef Name="templateID" />
+          </Key>
+          <Property Name="templateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TemplateName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateFile" Type="Binary" MaxLength="1" FixedLength="false" />
+          <NavigationProperty Name="Contracts" Relationship="Self.fkcontract_template" FromRole="TEMPLATE" ToRole="Contract" />
+          <NavigationProperty Name="RFI_INVITE" Relationship="Self.fktemplateID" FromRole="TEMPLATE" ToRole="RFI_INVITE" />
+          <NavigationProperty Name="RFP_INVITE" Relationship="Self.fk_templateID" FromRole="TEMPLATE" ToRole="RFP_INVITE" />
+        </EntityType>
+        <EntityType Name="VENDOR">
+          <Key>
+            <PropertyRef Name="Vendor_ID" />
+          </Key>
+          <Property Name="Vendor_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VendorLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VendorPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="VendorEmail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="Int32" />
+          <Property Name="Sanctioned" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Contracts" Relationship="Self.fkcontract_vendor" FromRole="VENDOR" ToRole="Contract" />
+          <NavigationProperty Name="RFI_INVITE" Relationship="Self.fk_vendorID" FromRole="VENDOR" ToRole="RFI_INVITE" />
+          <NavigationProperty Name="RFP_INVITE" Relationship="Self.fk_vendor_ID" FromRole="VENDOR" ToRole="RFP_INVITE" />
+          <NavigationProperty Name="VENDOR_LOGIN" Relationship="Self.fk_vendorlogin" FromRole="VENDOR" ToRole="VENDOR_LOGIN" />
+          <NavigationProperty Name="ITEMs" Relationship="Self.ITEMSOFFERED" FromRole="VENDOR" ToRole="ITEM" />
+        </EntityType>
+        <EntityType Name="VENDOR_LOGIN">
+          <Key>
+            <PropertyRef Name="Vendor_ID" />
+          </Key>
+          <Property Name="Vendor_ID" Type="Int32" Nullable="false" />
+          <Property Name="Vendor_Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Vendor_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VENDOR" Relationship="Self.fk_vendorlogin" FromRole="VENDOR_LOGIN" ToRole="VENDOR" />
+        </EntityType>
+        <Association Name="fkcontract_report">
+          <End Role="Reports" Type="Self.Report" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reports">
+              <PropertyRef Name="ReportID" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="reportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcontract_template">
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE">
+              <PropertyRef Name="templateID" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="templateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcontract_vendor">
+          <End Role="VENDOR" Type="Self.VENDOR" Multiplicity="0..1" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENDOR">
+              <PropertyRef Name="Vendor_ID" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="vendor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_employeeidd">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="EMP_LOGIN" Type="Self.EMP_LOGIN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EMP_LOGIN">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_report">
+          <End Role="Reports" Type="Self.Report" Multiplicity="1" />
+          <End Role="RFP_INVITE" Type="Self.RFP_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reports">
+              <PropertyRef Name="ReportID" />
+            </Principal>
+            <Dependent Role="RFP_INVITE">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkreport">
+          <End Role="Reports" Type="Self.Report" Multiplicity="1" />
+          <End Role="RFI_INVITE" Type="Self.RFI_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reports">
+              <PropertyRef Name="ReportID" />
+            </Principal>
+            <Dependent Role="RFI_INVITE">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkRFI_ID">
+          <End Role="RFI" Type="Self.RFI" Multiplicity="1" />
+          <End Role="RFI_INVITE" Type="Self.RFI_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RFI">
+              <PropertyRef Name="RFI_ID" />
+            </Principal>
+            <Dependent Role="RFI_INVITE">
+              <PropertyRef Name="RFI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vendorID">
+          <End Role="VENDOR" Type="Self.VENDOR" Multiplicity="1" />
+          <End Role="RFI_INVITE" Type="Self.RFI_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENDOR">
+              <PropertyRef Name="Vendor_ID" />
+            </Principal>
+            <Dependent Role="RFI_INVITE">
+              <PropertyRef Name="Vendor_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fktemplateID">
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="1" />
+          <End Role="RFI_INVITE" Type="Self.RFI_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE">
+              <PropertyRef Name="templateID" />
+            </Principal>
+            <Dependent Role="RFI_INVITE">
+              <PropertyRef Name="TemplateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkRFP_ID">
+          <End Role="RFP" Type="Self.RFP" Multiplicity="1" />
+          <End Role="RFP_INVITE" Type="Self.RFP_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RFP">
+              <PropertyRef Name="RFP_ID" />
+            </Principal>
+            <Dependent Role="RFP_INVITE">
+              <PropertyRef Name="RFP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_templateID">
+          <End Role="TEMPLATE" Type="Self.TEMPLATE" Multiplicity="1" />
+          <End Role="RFP_INVITE" Type="Self.RFP_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEMPLATE">
+              <PropertyRef Name="templateID" />
+            </Principal>
+            <Dependent Role="RFP_INVITE">
+              <PropertyRef Name="TemplateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vendor_ID">
+          <End Role="VENDOR" Type="Self.VENDOR" Multiplicity="1" />
+          <End Role="RFP_INVITE" Type="Self.RFP_INVITE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENDOR">
+              <PropertyRef Name="Vendor_ID" />
+            </Principal>
+            <Dependent Role="RFP_INVITE">
+              <PropertyRef Name="Vendor_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vendorlogin">
+          <End Role="VENDOR" Type="Self.VENDOR" Multiplicity="1" />
+          <End Role="VENDOR_LOGIN" Type="Self.VENDOR_LOGIN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="VENDOR">
+              <PropertyRef Name="Vendor_ID" />
+            </Principal>
+            <Dependent Role="VENDOR_LOGIN">
+              <PropertyRef Name="Vendor_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ITEMSOFFERED">
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+          <End Role="VENDOR" Type="Self.VENDOR" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BaptistHealthEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contracts" EntityType="Self.Contract" />
+          <EntitySet Name="EMP_LOGIN" EntityType="Self.EMP_LOGIN" />
+          <EntitySet Name="EMPLOYEEs" EntityType="Self.EMPLOYEE" />
+          <EntitySet Name="ITEMs" EntityType="Self.ITEM" />
+          <EntitySet Name="Reports" EntityType="Self.Report" />
+          <EntitySet Name="RFIs" EntityType="Self.RFI" />
+          <EntitySet Name="RFI_INVITE" EntityType="Self.RFI_INVITE" />
+          <EntitySet Name="RFPs" EntityType="Self.RFP" />
+          <EntitySet Name="RFP_INVITE" EntityType="Self.RFP_INVITE" />
+          <EntitySet Name="TEMPLATEs" EntityType="Self.TEMPLATE" />
+          <EntitySet Name="VENDORs" EntityType="Self.VENDOR" />
+          <EntitySet Name="VENDOR_LOGIN" EntityType="Self.VENDOR_LOGIN" />
+          <AssociationSet Name="fkcontract_report" Association="Self.fkcontract_report">
+            <End Role="Reports" EntitySet="Reports" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="fkcontract_template" Association="Self.fkcontract_template">
+            <End Role="TEMPLATE" EntitySet="TEMPLATEs" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="fkcontract_vendor" Association="Self.fkcontract_vendor">
+            <End Role="VENDOR" EntitySet="VENDORs" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="fk_employeeidd" Association="Self.fk_employeeidd">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="EMP_LOGIN" EntitySet="EMP_LOGIN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_report" Association="Self.fk_report">
+            <End Role="Reports" EntitySet="Reports" />
+            <End Role="RFP_INVITE" EntitySet="RFP_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fkreport" Association="Self.fkreport">
+            <End Role="Reports" EntitySet="Reports" />
+            <End Role="RFI_INVITE" EntitySet="RFI_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fkRFI_ID" Association="Self.fkRFI_ID">
+            <End Role="RFI" EntitySet="RFIs" />
+            <End Role="RFI_INVITE" EntitySet="RFI_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vendorID" Association="Self.fk_vendorID">
+            <End Role="VENDOR" EntitySet="VENDORs" />
+            <End Role="RFI_INVITE" EntitySet="RFI_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fktemplateID" Association="Self.fktemplateID">
+            <End Role="TEMPLATE" EntitySet="TEMPLATEs" />
+            <End Role="RFI_INVITE" EntitySet="RFI_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fkRFP_ID" Association="Self.fkRFP_ID">
+            <End Role="RFP" EntitySet="RFPs" />
+            <End Role="RFP_INVITE" EntitySet="RFP_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_templateID" Association="Self.fk_templateID">
+            <End Role="TEMPLATE" EntitySet="TEMPLATEs" />
+            <End Role="RFP_INVITE" EntitySet="RFP_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vendor_ID" Association="Self.fk_vendor_ID">
+            <End Role="VENDOR" EntitySet="VENDORs" />
+            <End Role="RFP_INVITE" EntitySet="RFP_INVITE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vendorlogin" Association="Self.fk_vendorlogin">
+            <End Role="VENDOR" EntitySet="VENDORs" />
+            <End Role="VENDOR_LOGIN" EntitySet="VENDOR_LOGIN" />
+          </AssociationSet>
+          <AssociationSet Name="ITEMSOFFERED" Association="Self.ITEMSOFFERED">
+            <End Role="ITEM" EntitySet="ITEMs" />
+            <End Role="VENDOR" EntitySet="VENDORs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BaptistHealthModelStoreContainer" CdmEntityContainer="BaptistHealthEntities">
+          <EntitySetMapping Name="Contracts">
+            <EntityTypeMapping TypeName="BaptistHealthModel.Contract">
+              <MappingFragment StoreEntitySet="Contract">
+                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+                <ScalarProperty Name="vendor_id" ColumnName="vendor_id" />
+                <ScalarProperty Name="reportID" ColumnName="reportID" />
+                <ScalarProperty Name="templateID" ColumnName="templateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMP_LOGIN">
+            <EntityTypeMapping TypeName="BaptistHealthModel.EMP_LOGIN">
+              <MappingFragment StoreEntitySet="EMP_LOGIN">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Emp_Username" ColumnName="Emp_Username" />
+                <ScalarProperty Name="Emp_Password" ColumnName="Emp_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLOYEEs">
+            <EntityTypeMapping TypeName="BaptistHealthModel.EMPLOYEE">
+              <MappingFragment StoreEntitySet="EMPLOYEE">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="EmployeeFirstName" ColumnName="EmployeeFirstName" />
+                <ScalarProperty Name="EmployeeLastName" ColumnName="EmployeeLastName" />
+                <ScalarProperty Name="EmployeeEmail" ColumnName="EmployeeEmail" />
+                <ScalarProperty Name="EmployeeSecurityQuestion" ColumnName="EmployeeSecurityQuestion" />
+                <ScalarProperty Name="EmployeeSecurityAnswer" ColumnName="EmployeeSecurityAnswer" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ITEMs">
+            <EntityTypeMapping TypeName="BaptistHealthModel.ITEM">
+              <MappingFragment StoreEntitySet="ITEM">
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemCategory" ColumnName="ItemCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="BaptistHealthModel.Report">
+              <MappingFragment StoreEntitySet="Reports">
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+                <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RFIs">
+            <EntityTypeMapping TypeName="BaptistHealthModel.RFI">
+              <MappingFragment StoreEntitySet="RFI">
+                <ScalarProperty Name="RFI_ID" ColumnName="RFI_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RFI_INVITE">
+            <EntityTypeMapping TypeName="BaptistHealthModel.RFI_INVITE">
+              <MappingFragment StoreEntitySet="RFI_INVITE">
+                <ScalarProperty Name="RFI_ID" ColumnName="RFI_ID" />
+                <ScalarProperty Name="Vendor_ID" ColumnName="Vendor_ID" />
+                <ScalarProperty Name="TemplateID" ColumnName="TemplateID" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RFPs">
+            <EntityTypeMapping TypeName="BaptistHealthModel.RFP">
+              <MappingFragment StoreEntitySet="RFP">
+                <ScalarProperty Name="RFP_ID" ColumnName="RFP_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RFP_INVITE">
+            <EntityTypeMapping TypeName="BaptistHealthModel.RFP_INVITE">
+              <MappingFragment StoreEntitySet="RFP_INVITE">
+                <ScalarProperty Name="RFP_ID" ColumnName="RFP_ID" />
+                <ScalarProperty Name="Vendor_ID" ColumnName="Vendor_ID" />
+                <ScalarProperty Name="TemplateID" ColumnName="TemplateID" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEMPLATEs">
+            <EntityTypeMapping TypeName="BaptistHealthModel.TEMPLATE">
+              <MappingFragment StoreEntitySet="TEMPLATE">
+                <ScalarProperty Name="templateID" ColumnName="templateID" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="TemplateFile" ColumnName="TemplateFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENDORs">
+            <EntityTypeMapping TypeName="BaptistHealthModel.VENDOR">
+              <MappingFragment StoreEntitySet="VENDOR">
+                <ScalarProperty Name="Vendor_ID" ColumnName="Vendor_ID" />
+                <ScalarProperty Name="VendorFirstName" ColumnName="VendorFirstName" />
+                <ScalarProperty Name="VendorLastName" ColumnName="VendorLastName" />
+                <ScalarProperty Name="VendorPhone" ColumnName="VendorPhone" />
+                <ScalarProperty Name="VendorEmail" ColumnName="VendorEmail" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Sanctioned" ColumnName="Sanctioned" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENDOR_LOGIN">
+            <EntityTypeMapping TypeName="BaptistHealthModel.VENDOR_LOGIN">
+              <MappingFragment StoreEntitySet="VENDOR_LOGIN">
+                <ScalarProperty Name="Vendor_ID" ColumnName="Vendor_ID" />
+                <ScalarProperty Name="Vendor_Username" ColumnName="Vendor_Username" />
+                <ScalarProperty Name="Vendor_Password" ColumnName="Vendor_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ITEMSOFFERED" TypeName="BaptistHealthModel.ITEMSOFFERED" StoreEntitySet="ITEMSOFFERED">
+            <EndProperty Name="ITEM">
+              <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+            </EndProperty>
+            <EndProperty Name="VENDOR">
+              <ScalarProperty Name="Vendor_ID" ColumnName="Vendor_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

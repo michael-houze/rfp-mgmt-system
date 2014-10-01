@@ -188,8 +188,59 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BHModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BHModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BHModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BHModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BHModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contract.cs">
+      <DependentUpon>BHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EMPLOYEE.cs">
+      <DependentUpon>BHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EMP_LOGIN.cs">
+      <DependentUpon>BHModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ITEM.cs">
+      <DependentUpon>BHModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Report.cs">
+      <DependentUpon>BHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RFI.cs">
+      <DependentUpon>BHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RFI_INVITE.cs">
+      <DependentUpon>BHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RFP.cs">
+      <DependentUpon>BHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RFP_INVITE.cs">
+      <DependentUpon>BHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TEMPLATE.cs">
+      <DependentUpon>BHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VENDOR.cs">
+      <DependentUpon>BHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VENDOR_LOGIN.cs">
+      <DependentUpon>BHModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rpf-mgmt-system.Context.cs">
       <AutoGen>True</AutoGen>
@@ -233,6 +284,23 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>rpf-mgmt-system.edmx</DependentUpon>
       <LastGenOutput>rpf-mgmt-system.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\BHModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BHModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BHModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BHModel.edmx</DependentUpon>
+      <LastGenOutput>BHModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BHModel.edmx.diagram">
+      <DependentUpon>BHModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\BHModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BHModel.edmx</DependentUpon>
+      <LastGenOutput>BHModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
