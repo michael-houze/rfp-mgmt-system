@@ -1,0 +1,93 @@
+﻿@model IEnumerable<rfp_mgmt_system.Models.VENDOR>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sanctioned)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VENDOR_LOGIN.Vendor_Username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sanctioned)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VENDOR_LOGIN.Vendor_Username)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Vendor_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Vendor_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Vendor_ID })
+        </td>
+    </tr>
+}
+
+</table>
