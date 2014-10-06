@@ -48,17 +48,19 @@ namespace rfp_mgmt_system.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Vendor_ID,VendorFirstName,VendorLastName,VendorPhone,VendorEmail,CompanyName,Street,City,State,Zip,Sanctioned")] VENDOR vENDOR)
+        public ActionResult Create([Bind(Include = "Vendor_ID,VendorFirstName,VendorLastName,VendorPhone,VendorEmail,CompanyName,Street,City,State,Zip")] VENDOR vendor)
         {
+
             if (ModelState.IsValid)
             {
-                db.VENDORs.Add(vENDOR);
+                vendor.Sanctioned = "0";
+                db.VENDORs.Add(vendor);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
-            ViewBag.Vendor_ID = new SelectList(db.VENDOR_LOGIN, "Vendor_ID", "Vendor_Username", vENDOR.Vendor_ID);
-            return View(vENDOR);
+            ViewBag.Vendor_ID = new SelectList(db.VENDOR_LOGIN, "Vendor_ID", "Vendor_Username", vendor.Vendor_ID);
+            return View(vendor);
         }
 
         // GET: VendorRegistration/Edit/5
