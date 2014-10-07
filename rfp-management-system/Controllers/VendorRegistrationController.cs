@@ -1,6 +1,13 @@
-﻿using System.Net;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using rfp_mgmt_system.Models;
+using rfp_mgmt_system.Models.ViewModels;
 
 namespace rfp_mgmt_system.Controllers
 {
@@ -26,8 +33,10 @@ namespace rfp_mgmt_system.Controllers
         // GET: VendorRegistration/Create
         public ActionResult Create()
         {
+            VendorReg newVendor = new VendorReg();
+            newVendor.Items = db.ITEMS.ToList();
             ViewBag.Vendor_ID = new SelectList(db.VENDOR_LOGIN, "Vendor_ID", "Vendor_Username");
-            return View();
+            return View(newVendor);
         }
 
         // POST: VendorRegistration/Create
@@ -48,6 +57,11 @@ namespace rfp_mgmt_system.Controllers
 
             ViewBag.Vendor_ID = new SelectList(db.VENDOR_LOGIN, "Vendor_ID", "Vendor_Username", vendor.Vendor_ID);
             return View(vendor);
+        }
+
+        public ActionResult ProductCategory()
+        {
+            return View(db.ITEMS.ToList());
         }
 
     }
