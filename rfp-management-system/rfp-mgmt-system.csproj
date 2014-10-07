@@ -320,10 +320,7 @@
     <Content Include="Views\VendorContract\Respond.cshtml" />
     <Content Include="Views\VendorContract\Decline.cshtml" />
     <Content Include="Views\VendorRegistration\Create.cshtml" />
-    <Content Include="Views\VendorRegistration\Delete.cshtml" />
     <Content Include="Views\VendorRegistration\Details.cshtml" />
-    <Content Include="Views\VendorRegistration\Edit.cshtml" />
-    <Content Include="Views\VendorRegistration\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

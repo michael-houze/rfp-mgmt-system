@@ -4,10 +4,9 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Vendor Registration</h2>
 
 <div>
-    <h4>VENDOR</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -82,25 +81,12 @@
             @Html.DisplayFor(model => model.Zip)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sanctioned)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sanctioned)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VENDOR_LOGIN.Vendor_Username)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VENDOR_LOGIN.Vendor_Username)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Vendor_ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    Thank you for submitting your registration form.  A representative from Baptist Health will be in contact with you shortly.
+</p>
+
+<p>
+    @Html.ActionLink("Return to Homepage", "Index", "Home")
 </p>

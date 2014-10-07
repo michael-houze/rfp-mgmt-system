@@ -24,9 +24,9 @@ namespace rfp_mgmt_system.Models
         }
     
         public int Vendor_ID { get; set; }
-        [DisplayName("Representative First Name")]
+        [DisplayName("First Name")]
         public string VendorFirstName { get; set; }
-        [DisplayName("Representative First Name")]
+        [DisplayName("Last Name")]
         public string VendorLastName { get; set; }
         [DisplayName("Phone Number")]
         public string VendorPhone { get; set; }
