@@ -1,81 +1,8 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Create an RFP";
 }
-<form class="form-horizontal">
-    <fieldset>
 
-        <!-- Form Name -->
-        <legend>Create RFP</legend>
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="RFP">RFP</label>
-            <div class="col-md-4">
-                <input id="RFP" name="RFP" type="text" placeholder="placeholder" class="form-control input-md" required="">
-
-            </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="Description">Description</label>
-            <div class="col-md-4">
-                <input id="Description" name="Description" type="text" placeholder="placeholder" class="form-control input-md" required="">
-
-            </div>
-        </div>
-
-        <!-- Button Drop Down -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="Status">Status</label>
-            <div class="col-md-4">
-                <div class="input-group">
-                    <input id="Status" name="Status" class="form-control" placeholder="placeholder" type="text" required="">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            Status
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="#">Active</a></li>
-                            <li><a href="#">Pending</a></li>
-                            <li><a href="#">Inactive</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Select Multiple -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="Vendor Invite">Vendor Invite</label>
-            <div class="col-md-4">
-                <select id="Vendor Invite" name="Vendor Invite" class="form-control" multiple="multiple">
-                    <option value="Placeholder">Vendor Placeholder</option>
-                    <option value="Placeholder">Vendor Placeholder</option>
-                    <option value="Placeholder">Vendor Placeholder</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- File Button -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="Upload RFP">Upload RFP</label>
-            <div class="col-md-4">
-                <input id="Upload RFP" name="Upload RFP" class="input-file" type="file">
-            </div>
-        </div>
-
-        <!-- Button -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="Submit"></label>
-            <div class="col-md-4">
-                <button id="Submit" name="Submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-
-    </fieldset>
-</form>
 <h1>This is the RFP Creation page</h1><br />
 
 <h3>Page synopsis</h3>
@@ -94,13 +21,15 @@
     <li>The user creates an RFP and is sent back to RFP management</li>
     <li>The user does not create an RFP and returns to RFP management</li>
 </ul>
-        <br />
 
-        <h3>Links</h3>
-        @Html.ActionLink("Return to RFP Management", "Index", "EmployeeRFP")<br />
+<br />
 
-        <br />
+<h3>Links</h3>
+@Html.ActionLink("Return to RFP Management", "Index", "EmployeeRFP")<br />
 
-        <h3>Backend Information</h3>
-        <h5>Controller: EmployeeRFP</h5>
-        <h5>Method: Create</h5>
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: EmployeeRFP</h5>
+<h5>Method: Create</h5>
+
