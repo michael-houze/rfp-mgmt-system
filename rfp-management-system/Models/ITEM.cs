@@ -20,7 +20,6 @@ namespace rfp_mgmt_system.Models
         }
     
         public int ItemID { get; set; }
-        public string ItemName { get; set; }
         public string ItemCategory { get; set; }
     
         public virtual ICollection<VENDOR> VENDORs { get; set; }

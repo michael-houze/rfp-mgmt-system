@@ -25,17 +25,17 @@ namespace rfp_mgmt_system.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Contract> CONTRACTS { get; set; }
+        public virtual DbSet<Contract> Contracts { get; set; }
         public virtual DbSet<EMP_LOGIN> EMP_LOGIN { get; set; }
-        public virtual DbSet<EMPLOYEE> EMPLOYEES { get; set; }
-        public virtual DbSet<ITEM> ITEMS { get; set; }
-        public virtual DbSet<Report> REPORTS { get; set; }
-        public virtual DbSet<RFI> RFIS { get; set; }
+        public virtual DbSet<EMPLOYEE> EMPLOYEEs { get; set; }
+        public virtual DbSet<ITEM> ITEM { get; set; }
+        public virtual DbSet<Report> Reports { get; set; }
+        public virtual DbSet<RFI> RFIs { get; set; }
         public virtual DbSet<RFI_INVITE> RFI_INVITE { get; set; }
-        public virtual DbSet<RFP> RFPS { get; set; }
+        public virtual DbSet<RFP> RFPs { get; set; }
         public virtual DbSet<RFP_INVITE> RFP_INVITE { get; set; }
-        public virtual DbSet<TEMPLATE> TEMPLATES { get; set; }
-        public virtual DbSet<VENDOR> VENDORS { get; set; }
+        public virtual DbSet<TEMPLATE> TEMPLATEs { get; set; }
+        public virtual DbSet<VENDOR> VENDOR { get; set; }
         public virtual DbSet<VENDOR_LOGIN> VENDOR_LOGIN { get; set; }
     }
 }

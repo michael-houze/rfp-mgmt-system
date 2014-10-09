@@ -22,7 +22,7 @@ namespace rfp_mgmt_system.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VENDOR vendor = db.VENDORS.Find(id);
+            VENDOR vendor = db.VENDOR.Find(id);
             if (vendor == null)
             {
                 return HttpNotFound();
@@ -34,7 +34,7 @@ namespace rfp_mgmt_system.Controllers
         public ActionResult Create()
         {
             VendorReg newVendor = new VendorReg();
-            newVendor.Items = db.ITEMS.ToList();
+            newVendor.Items = db.ITEM.ToList();
             ViewBag.Vendor_ID = new SelectList(db.VENDOR_LOGIN, "Vendor_ID", "Vendor_Username");
             return View(newVendor);
         }
@@ -50,7 +50,7 @@ namespace rfp_mgmt_system.Controllers
             if (ModelState.IsValid)
             {
                 vendor.Sanctioned = "0";
-                db.VENDORS.Add(vendor);
+                db.VENDOR.Add(vendor);
                 db.SaveChanges();
                 return RedirectToAction("Details", "VendorRegistration", new { id = vendor.Vendor_ID });
             }
@@ -61,7 +61,7 @@ namespace rfp_mgmt_system.Controllers
 
         public ActionResult ProductCategory()
         {
-            return View(db.ITEMS.ToList());
+            return View(db.ITEM.ToList());
         }
 
     }
