@@ -348,9 +348,6 @@
     <Content Include="Views\EmployeeRFI\Create.cshtml" />
     <Content Include="Views\EmployeeRFI\Index.cshtml" />
     <Content Include="Views\EmployeeRFI\Update.cshtml" />
-    <Content Include="Views\EmployeeRFP\Create.cshtml" />
-    <Content Include="Views\EmployeeRFP\Index.cshtml" />
-    <Content Include="Views\EmployeeRFP\Update.cshtml" />
     <Content Include="Views\EmployeeVendor\Index.cshtml" />
     <Content Include="Views\EmployeeVendor\Update.cshtml" />
     <Content Include="Views\Vendor\Index.cshtml" />
@@ -368,6 +365,9 @@
     <Content Include="Views\AdminEmployee\Index.cshtml" />
     <Content Include="Views\AdminEmployee\Lock.cshtml" />
     <Content Include="Views\AdminEmployee\Update.cshtml" />
+    <Content Include="Views\EmployeeRFP\Create.cshtml" />
+    <Content Include="Views\EmployeeRFP\Index.cshtml" />
+    <Content Include="Views\EmployeeRFP\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
