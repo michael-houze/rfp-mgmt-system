@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Reset Password";
+}
+
+<h1>This is the Password Reset page.</h1><br />
+
+<h3>Page synopsis</h3>
+<p>
+    This is the page that users will go to when they have forgotten their password and need to
+    reset it.  This page will ask their user their email address.  If the address is found in the
+    database, a confirmation will pop up telling that they have a new, temporary password which
+    has been emailed to them. If their email address is not in the database, an error message will
+    pop up.
+</p>
+
+<br />
+<p>From here, there is one possibility</p>
+
+<ul>
+    <li>The user successfully enters their email address and gets redirected to the login screen</li>
+</ul>
+
+<br />
+<h3>Links</h3>
+@Html.ActionLink("Password Gets Reset", "Index", "Login")<br />
+
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: Login</h5>
+<h5>Method: Reset</h5>

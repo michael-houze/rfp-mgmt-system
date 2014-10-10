@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Update User Account";
+}
+
+<h1>This is the Account Update page</h1><br />
+
+<h3>Page synopsis</h3>
+<p>
+    This is the page the user will use to update information on their account.  All
+    of the editable information about the user will be displayed.  This will be the page
+    vendors can use to add product categories to their accounts.  If the user updates any fields,
+    a confirmation will show that the update was successful.  Whether changes are made or not, the
+    user will be redirected back to their respective dashboard
+</p>
+
+<br />
+
+<p>From here, there are 3 possibilities:</p>
+
+<ul>
+    <li>The user is an admin and gets redirected to their dashboard</li>
+    <li>The user is an employee and gets redirected to their dashboard</li>
+    <li>The user is a vendor and gets redirected to their dashboard</li>
+</ul>
+
+<br />
+
+<h3>Links</h3>
+@Html.ActionLink("Admin Dashboard", "Index", "Admin")<br />
+@Html.ActionLink("Employee Dashboard", "Index", "Employee")<br />
+@Html.ActionLink("Vendor Dashboard", "Index", "Vendor")<br />
+
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: Login</h5>
+<h5>Method: Update</h5>
+

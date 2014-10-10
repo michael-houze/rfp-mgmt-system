@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Administrator Dashboard";
+}
+
+<h1>This is the Administrator Dashboard</h1><br />
+
+<h3>Page synopsis</h3>
+<p>
+    This is the page the administrator will be directed to when they successfully log in.
+    The admin has access to all functions the employee does, which include: manage vendors, 
+    manage RFIs, manage RFPs, manage Contracts, report generation and personal account maintanence.
+    In addition, they have access to the following: employee maintanence.
+</p>
+
+<br />
+
+<p>From here, there are 7 possibilities:</p>
+
+<ul>
+    <li>The admin selects the vendor management link</li>
+    <li>The admin selects the manage RFI link</li>
+    <li>The admin selects the manage RFP link</li>
+    <li>The admin selects the manage contracts link</li>
+    <li>The admin selects the reports generation link</li>
+    <li>The admin selects the user account management link</li>
+    <li>The admin selects the employee maintanence link</li>
+</ul>
+
+<br />
+
+<h3>Links</h3>
+@Html.ActionLink("Vendor Management", "Index", "EmployeeVendor")<br />
+@Html.ActionLink("RFI Management", "Index", "EmployeeRFI")<br />
+@Html.ActionLink("RFP Management", "Index", "EmployeeRFP")<br />
+@Html.ActionLink("Contract Management", "Index", "EmployeeContract")<br />
+@Html.ActionLink("Report Generation", "Index", "EmployeeReport")<br />
+@Html.ActionLink("Update Account Information", "Update", "Login")<br />
+@Html.ActionLink("Employee Maintanence", "Index", "AdminEmployee")<br />
+
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: Admin</h5>
+<h5>Method: Index</h5>
+

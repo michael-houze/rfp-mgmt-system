@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Decline Contract";
+}
+
+<h1>Decline Selected Contract</h1><br />
+
+<h3>Page synopsis</h3>
+<p>
+    This is the page the vendor will use to respond decline a selected contract.  This screen will list all of
+    the information regarding the contract and will a button for the vendor to decline responding to the contract.
+    There will also be a link to return to the Vendor Contract dashboard without declining
+</p>
+
+<br />
+
+<p>From here, there are 2 possibilities:</p>
+
+<ul>
+    <li>The vendor declines the Contract and is returned to the Contract dashboard</li>
+    <li>The vendor does not decline the Contract and returns to the Contract dashboard</li>
+</ul>
+
+<br />
+
+<h3>Links</h3>
+@Html.ActionLink("Return to Vendor Contract Dashboard", "Index", "VendorContract")<br />
+
+
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: VendorContract</h5>
+<h5>Method: Decline</h5>
+

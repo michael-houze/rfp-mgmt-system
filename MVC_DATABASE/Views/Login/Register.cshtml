@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Vendor Registration";
+}
+
+<h1>This is the Vendor Registration page.</h1><br />
+
+<h3>Page synopsis</h3>
+<p>
+    This is the page that new vendors will use to apply for access to the system.  This form will contain all
+    the information BH needs on vendors.  There will be validation for each field to ensure nothing is skipped.
+    Upon completion of the form, the venodr will be created in the system, but in pending status.  An employee
+    will need to update their status in order for login access to be given.
+</p>
+
+<br />
+<p>From here, there are 2 possibilities:</p>
+
+<ul>
+    <li>The vendor successfully completed the form. They will be redirected back to the home page</li>
+    <li>The vendor does not complete the form and goes back to the login screen.</li>
+</ul>
+
+<br />
+<h3>Links</h3>
+@Html.ActionLink("Vendor Completes Form", "Index", "Home")<br />
+@Html.ActionLink("Return to Login", "Index", "Login")<br />
+
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: Login</h5>
+<h5>Method: Register</h5>
+

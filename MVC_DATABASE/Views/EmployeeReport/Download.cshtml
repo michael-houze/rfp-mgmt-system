@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Download Selected Report";
+}
+
+<h1>This is the Report Download page</h1><br />
+
+<h3>Page synopsis</h3>
+<p>
+    This is the page the employee will use to download the selected report. This
+    feature will more than likely not need a view, but the method will simply download
+    the request file when the 'Download' button is clicked on the reports dashboard.
+    If that is the case, the view will simply act as a placeholder until the feature 
+    is implemented.
+</p>
+
+<br />
+
+<p>From here, there is one possibility:</p>
+
+<ul>
+    <li>The user downloads the selected Report and is sent back to Report management</li>
+</ul>
+
+<br />
+
+<h3>Links</h3>
+@Html.ActionLink("Return to Report Management", "Index", "EmployeeReport")<br />
+
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: EmployeeReport</h5>
+<h5>Method: Download</h5>
+

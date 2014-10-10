@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Update Employee";
+}
+
+<h1>This is the Update Selected Employee page</h1><br />
+
+<h3>Page synopsis</h3>
+<p>
+    This is the page the admin will use to edit an existing employee. This page will list all
+    of the attributes that exist for the selected employee.  Validation will exist on each
+    field to ensure there are no data issues.  When the 'Update' link is selected, the changes
+    will be saved.  There will also be a 'Return to Employee Maintanence' link.
+</p>
+
+<br />
+
+<p>From here, there are 2 possibilities:</p>
+
+<ul>
+    <li>The user edits the selected Employee and is sent back to Employee Maintanence/li>
+    <li>The user does not edit the Employee and returns to Employee Maintanence</li>
+</ul>
+
+<br />
+
+<h3>Links</h3>
+@Html.ActionLink("Return to Employee Maintanence", "Index", "AdminEmployee")<br />
+
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: AdminEmployee</h5>
+<h5>Method: Update</h5>
+

@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Create a Report";
+}
+
+<h1>This is the Report Creation page</h1><br />
+
+<h3>Page synopsis</h3>
+<p>
+    This is the page the employee will use to create a new report. This page will list all
+    of the criteria that the user can use to create their report.   When the 'Create' link is 
+    selected, the report will begin to generate and the user will be redirected back to the
+    report management.  There will also be a 'Return to RFI Management' link.
+</p>
+
+<br />
+
+<p>From here, there are 2 possibilities:</p>
+
+<ul>
+    <li>The user creates a Report and is sent back to Report management</li>
+    <li>The user does not create an Report and returns to Report management</li>
+</ul>
+
+<br />
+
+<h3>Links</h3>
+@Html.ActionLink("Return to Report Management", "Index", "EmployeeReport")<br />
+
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: EmployeeReport</h5>
+<h5>Method: Create</h5>
+

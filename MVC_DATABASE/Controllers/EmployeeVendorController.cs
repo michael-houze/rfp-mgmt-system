@@ -6,9 +6,15 @@ using System.Web.Mvc;
 
 namespace rfp_management_system.Controllers
 {
-    public class HomeController : Controller
+    public class EmployeeVendorController : Controller
     {
+        // GET: EmployeeVendor
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Update()
         {
             return View();
         }

@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Create a Contract";
+}
+
+<h1>This is the Contract Creation page</h1><br />
+
+<h3>Page synopsis</h3>
+<p>
+    This is the page the employee will use to create a new contract. This page will list all
+    of the fields that need to be filled out in order to create a contract.  Validation will exist on each
+    filed to ensure there are no data issues.  When the 'Create' link is selected, the contract will be added
+    to the system.  There will also be a 'Return to Contract Management' link.
+</p>
+
+<br />
+
+<p>From here, there are 2 possibilities:</p>
+
+<ul>
+    <li>The user creates a Contract and is sent back to Contract management</li>
+    <li>The user does not create a Contract and returns to Contract management</li>
+</ul>
+
+<br />
+
+<h3>Links</h3>
+@Html.ActionLink("Return to Contract Management", "Index", "EmployeeContract")<br />
+
+<br />
+
+<h3>Backend Information</h3>
+<h5>Controller: EmployeeContract</h5>
+<h5>Method: Create</h5>
+
