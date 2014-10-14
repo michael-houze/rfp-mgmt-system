@@ -11,12 +11,22 @@ namespace MVC_DATABASE.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class EMPLOYEE
     {
         public string Id { get; set; }
+     
+        [Required(ErrorMessage="First Name Required")]
+        [StringLength(50,ErrorMessage="Must be under 50 characters")]
+        [RegularExpression("^([a-zA-Z0-9 .&'-]+)$", ErrorMessage = "Invalid First Name")]
         public string FIRSTNAME { get; set; }
+       
+        [Required(ErrorMessage="Last Name Required")]
+        [StringLength(50,ErrorMessage="Must be under 50 characters")]
+        [RegularExpression("^([a-zA-Z0-9 .&'-]+)$", ErrorMessage = "Invalid Last Name")]
         public string LASTNAME { get; set; }
+        
         public string EMPSTATUS { get; set; }
         public string LOG { get; set; }
     
